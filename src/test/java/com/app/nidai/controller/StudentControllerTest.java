@@ -21,7 +21,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.app.nidai.dto.AttendanceDto;
 import com.app.nidai.dto.AttendanceRequest;
 import com.app.nidai.dto.VerseDto;
-import com.app.nidai.entity.Attendance;
 import com.app.nidai.entity.AttendanceStatus;
 import com.app.nidai.service.StudentService;
 
