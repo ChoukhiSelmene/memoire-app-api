@@ -79,7 +79,7 @@ public class StudentService {
     public VerseDto validateNextVerse(String shortId) {
         // 1. Récupération de l'étudiant
         Student student = studentRepository.findByShortId(shortId)
-            .orElseThrow(() -> new IllegalArgumentException("Etudiant introuvable :" + shortId));
+            .orElseThrow(() -> new IllegalArgumentException("Etudiant introuvable : " + shortId));
 
         // 2. Calcul du prochain index
         int nextIndex = 1; // Par défaut, s'il n'a rien validé, il commence au vers 1
