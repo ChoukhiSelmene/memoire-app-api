@@ -80,7 +80,6 @@ public class StudentServiceTest {
 
         // On dicte au mock son comportement
         when(studentRepository.findByShortId("MEMO-TEST")).thenReturn(Optional.of(mockStudent));
-        when(studentRepository.findByShortId("MEMO-TEST")).thenReturn(Optional.of(mockStudent));
         when(verseRepository.findByLearningIndexLessThanEqualOrderByLearningIndexAsc(10))
                 .thenReturn(List.of(mockVerse));
 
