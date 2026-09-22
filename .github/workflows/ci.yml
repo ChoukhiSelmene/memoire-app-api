@@ -50,4 +50,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_USER: ${{ vars.GITHUB_USER }} # <--- La variable récupérée depuis GitHub
-      run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:5.8.0.7211 -B
+      run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -B
