@@ -31,6 +31,11 @@
     <!-- Ajoute ces deux lignes pour forcer l'UTF-8 -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<!-- On utilise la variable d'environnement GITHUB_USER si elle existe -->
+    <sonar.organization>${env.GITHUB_USER}</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <!-- On concatène la variable pour former la clé du projet -->
+    <sonar.projectKey>${env.GITHUB_USER}_memoire-app</sonar.projectKey>
 </properties>
 	<dependencies>
 		<dependency>
@@ -126,6 +131,25 @@
 								</path>
 							</annotationProcessorPaths>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.11</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
