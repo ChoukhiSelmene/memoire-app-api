@@ -62,7 +62,7 @@ public class StudentService {
     public List<AttendanceDto> getStudentAttendances(String shortId) {
         // 1. On vérifie d'abord que l'étudiant existe, sinon on lève une exception (comme pour les acquis)
         studentRepository.findByShortId(shortId)
-                .orElseThrow(() -> new IllegalArgumentException("Étudiant introuvable : " + shortId));  
+                .orElseThrow(() -> new IllegalArgumentException("Etudiant introuvable : " + shortId));  
         // 2. On récupère la liste des entités (pointages brut)
         // 3. On utilise l'API Stream pour les transformer en objets immuables et légers (DTO)
         return attendanceRepository.findByStudentShortId(shortId)
@@ -79,7 +79,7 @@ public class StudentService {
     public VerseDto validateNextVerse(String shortId) {
         // 1. Récupération de l'étudiant
         Student student = studentRepository.findByShortId(shortId)
-            .orElseThrow(() -> new IllegalArgumentException("Étudiant introuvable :" + shortId));
+            .orElseThrow(() -> new IllegalArgumentException("Etudiant introuvable :" + shortId));
 
         // 2. Calcul du prochain index
         int nextIndex = 1; // Par défaut, s'il n'a rien validé, il commence au vers 1
@@ -114,15 +114,15 @@ public class StudentService {
     public AttendanceDto addAttendance(String shortId, AttendanceRequest request) {
         // 1. Récupération de l'étudiant
         Student student = studentRepository.findByShortId(shortId)
-            .orElseThrow(() -> new IllegalArgumentException("Étudiant introuvable : " + shortId));
+            .orElseThrow(() -> new IllegalArgumentException("Etudiant introuvable : " + shortId));
 
         // 2. Récupération de la séance grâce à l'ID reçu dans le JSON
         CourseSession session = courseSessionRepository.findById(request.courseSessionId())
-            .orElseThrow(() -> new IllegalArgumentException("Séance introuvable : " + shortId));
+            .orElseThrow(() -> new IllegalArgumentException("Seance introuvable : " + shortId));
         
         // 2.5 Contrôle métier : Vérifier que le pointage n'existe pas déjà
         if(attendanceRepository.existsByStudentShortIdAndCourseSessionId(shortId, request.courseSessionId())) {
-            throw new IllegalStateException("Un pointage existe déjà pour cet étudiant à cette séance.");
+            throw new IllegalStateException("Un pointage existe deja pour cet étudiant a cette seance.");
         }
 
         // 3. Création et hydratation de la nouvelle entité Attendance

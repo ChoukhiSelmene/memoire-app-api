@@ -1,4 +1,4 @@
-package com.app.nida_i;
+package com.app.nidai;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
