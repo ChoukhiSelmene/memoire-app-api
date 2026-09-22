@@ -34,7 +34,7 @@
 	<!-- SonarQube Cloud variables -->
     <sonar.organization>choukhiselmene</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.projectKey>choukhiselmene_memoire-app-api</sonar.projectKey>
+    <sonar.projectKey>ChoukhiSelmene_memoire-app-api</sonar.projectKey>
 </properties>
 	<dependencies>
 		<dependency>
