@@ -31,11 +31,10 @@
     <!-- Ajoute ces deux lignes pour forcer l'UTF-8 -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	<!-- On utilise la variable d'environnement GITHUB_USER si elle existe -->
-    <sonar.organization>${env.GITHUB_USER}</sonar.organization>
+	<!-- SonarQube Cloud variables -->
+    <sonar.organization>choukhiselmene</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <!-- On concatène la variable pour former la clé du projet -->
-    <sonar.projectKey>${env.GITHUB_USER}_memoire-app</sonar.projectKey>
+    <sonar.projectKey>choukhiselmene_pseudo_memoire-app-api</sonar.projectKey>
 </properties>
 	<dependencies>
 		<dependency>

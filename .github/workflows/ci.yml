@@ -42,12 +42,16 @@ jobs:
         cache: maven # Active le cache pour télécharger les dépendances plus vite aux prochains lancements
 
     # 3. On lance les tests Maven (avec les identifiants de la BDD éphémère injectés)
-    - name: Build and Test with SonarCloud
+    - name: Build and Test
       env: 
         DB_URL: jdbc:postgresql://localhost:5432/test_db
         DB_USERNAME: postgres
         DB_PASSWORD: root
+      run: mvn clean test -B
+
+    # 4. On lance uniquement l'analyse SonarCloud AVEC le token
+    - name: SonarCloud Scan
+      env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        GITHUB_USER: ${{ vars.GITHUB_USER }} # <--- La variable récupérée depuis GitHub
-      run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -B
+      run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -B
