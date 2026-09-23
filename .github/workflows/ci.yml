@@ -32,6 +32,8 @@ jobs:
     # 1. On récupère le code source
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     # 2. On installe Java 21 sur le serveur
     - name: Set up JDK 21
