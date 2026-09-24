@@ -57,3 +57,29 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -B
+
+    # 5. Démarrage éphémère de l'API pour extraire la spécification OpenAPI
+    - name: Extract OpenAPI JSON
+      env: 
+        DB_URL: jdbc:postgresql://localhost:5432/test_db
+        DB_USERNAME: postgres
+        DB_PASSWORD: root
+      run: |
+        java -jar target/*.jar &
+        sleep 15
+        curl -s http://localhost:8080/api-docs > openapi.json
+        kill %1
+      
+    # 6. Génération du site statique Swagger UI
+    - name: Generate Swagger UI
+      uses: Legion2/swagger-ui-action@v1
+      with:
+        output: swagger-ui
+        openapi-file: openapi.json
+    
+    # 7. Déploiement sur GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        publish_dir: ./swagger-ui
