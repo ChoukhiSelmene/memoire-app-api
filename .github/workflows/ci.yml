@@ -65,6 +65,7 @@ jobs:
         DB_USERNAME: postgres
         DB_PASSWORD: root
       run: |
+        mvn package -DskipTests -B
         java -jar target/*.jar &
         sleep 15
         curl -s http://localhost:8080/api-docs > openapi.json
