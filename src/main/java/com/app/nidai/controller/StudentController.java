@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController 
-@RequestMapping("api/students/{shortId}")
+@RequestMapping(value = "api/students/{shortId}", produces = "application/json")
 public class StudentController {
 
     private final StudentService studentService;
