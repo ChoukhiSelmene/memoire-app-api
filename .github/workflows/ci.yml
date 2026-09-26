@@ -77,6 +77,8 @@ jobs:
       with:
         output: swagger-ui
         spec-file: openapi.json
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     # 7. Déploiement sur GitHub Pages
     - name: Deploy to GitHub Pages
