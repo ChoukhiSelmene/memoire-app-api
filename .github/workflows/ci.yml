@@ -1,5 +1,8 @@
 name: CI Pipeline
 
+permissions:
+  contents: write
+
 # Déclenche le pipeline à chaque push sur une PR ou directement sur main
 on:
   push:
