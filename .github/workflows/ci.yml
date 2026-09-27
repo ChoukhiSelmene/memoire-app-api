@@ -71,7 +71,7 @@ jobs:
         mvn package -DskipTests -B
         java -jar target/*.jar &
         sleep 15
-        curl -s http://localhost:8080/api-docs > openapi.json
+        curl -s http://localhost:8080/v3/api-docs > openapi.json
         kill %1
       
     # 6. Génération du site statique Swagger UI
